@@ -27,8 +27,8 @@ app.get("/inventory/items/",(req,res)=>{
             console.log("Failed to query the items: " + err)
             res.sendStatus(500)
             return
-        }
+      }
     res.json(rows)
     })
-     
+
 })
