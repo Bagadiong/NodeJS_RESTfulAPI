@@ -32,3 +32,21 @@ app.get("/inventory/items/",(req,res)=>{
     })
 
 })
+
+//GET an Item
+app.get("/inventory/items/:id",(req,res)=>{
+    console.log("Getting data of item: " + req.params.id)
+
+    
+    const query = "SELECT * FROM items WHERE id=?"
+    const itemID= req.params.id
+    connection.query(query,[itemID],(err,rows,fields)=>{
+        if (err){
+            console.log("Failed to query the item: " + err)
+            res.sendStatus(500)
+            return
+        }
+    res.json(rows)
+    })
+     
+})
