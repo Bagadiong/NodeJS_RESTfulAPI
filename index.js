@@ -33,6 +33,7 @@ app.get("/inventory/items/",(req,res)=>{
             return
       }
     res.json(rows)
+    console.log("Data displayed...")
     })
 
 })
@@ -51,13 +52,14 @@ app.get("/inventory/items/:id",(req,res)=>{
             return
         }
     res.json(rows)
+    console.log("Data displayed...")
     })
      
 })
 //Delete an Item
 
 app.delete('/inventory/items/:id', (req,res)=>{
-    
+    console.log("Deleting item: " + req.params.id)
     const itemID=req.params.id
     const query  ="DELETE FROM items WHERE id=? "
     console.log("Deleting data of item:" + itemID)
@@ -67,11 +69,14 @@ app.delete('/inventory/items/:id', (req,res)=>{
             res.sendStatus(500)
             return
         }
+
     res.send("Item:"+ itemID+ " Deleted Successfully")
+    console.log("Item:"+ itemID+ " Deleted Successfully")
     })
 })
 //ADD item
 app.post("/inventory/items",(req,res)=>{
+    console.log("Adding item...")
     var jsonData=req.body
     const query="INSERT INTO items(name,qty,amount) VALUES (?,?,?)"
     connection.query(query,[jsonData.name,jsonData.qty,jsonData.amount],(err,results,fields)=>{
@@ -81,6 +86,7 @@ app.post("/inventory/items",(req,res)=>{
             return
         }
         res.send("Inserted a new Item")
+        console.log("Inserted a new Item")
     })
 })
 
@@ -96,5 +102,6 @@ app.put("/inventory/items/:id",(req,res)=>{
             return
         }
         res.send("Update Successfully")
+        console.log("Update Successfully")
     })
 })
