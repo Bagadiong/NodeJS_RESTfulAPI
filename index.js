@@ -66,3 +66,16 @@ app.delete('/inventory/items/:id', (req,res)=>{
     res.send("Item:"+ itemID+ " Deleted Successfully")
     })
 })
+//ADD item
+app.post("/inventory/items",(req,res)=>{
+    var jsonData=req.body
+    const query="INSERT INTO items(name,qty,amount) VALUES (?,?,?)"
+    connection.query(query,[jsonData.name,jsonData.qty,jsonData.amount],(err,results,fields)=>{
+        if (err){
+            console.log("Failed to add item: " + err)
+            res.sendStatus(500)
+            return
+        }
+        res.send("Inserted a new Item")
+    })
+})
