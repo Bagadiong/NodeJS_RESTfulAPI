@@ -1,6 +1,10 @@
 const mysql = require('mysql')
 const express = require('express')
 const app = express()
+const body = require('body-parser')
+
+app.use(body.json());
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
