@@ -50,3 +50,19 @@ app.get("/inventory/items/:id",(req,res)=>{
     })
      
 })
+//Delete an Item
+
+app.delete('/inventory/items/:id', (req,res)=>{
+    
+    const itemID=req.params.id
+    const query  ="DELETE FROM items WHERE id=? "
+    console.log("Deleting data of item:" + itemID)
+    connection.query(query,[itemID],(err,rows,fields)=>{
+        if (err){
+            console.log("Failed to delete item: " + err)
+            res.sendStatus(500)
+            return
+        }
+    res.send("Item:"+ itemID+ " Deleted Successfully")
+    })
+})
