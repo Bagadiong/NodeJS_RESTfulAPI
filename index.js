@@ -9,7 +9,6 @@ app.use(body.json());
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
     database: 'inventory'
 })
 

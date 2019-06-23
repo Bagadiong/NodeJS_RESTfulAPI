@@ -24,12 +24,11 @@ localhost:3000/inventory/items
 ```
 host: 'localhost',
     user: 'root',
-    password: '',
     database: 'inventory'
 ```
 
 ### ADDITIONAL APPS
-POSTMAN for cheking the API ROUTES
+POSTMAN for checking the API ROUTES
 ### API ROUTES
 
 To get all data in items table(GET)
